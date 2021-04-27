@@ -3,7 +3,7 @@
 <html lang="zh-CN" class="bootstrap-admin-vertical-centered">
 <head>
 	<meta charset="UTF-8">
-	<title>图书馆管理系统</title>
+	<title>Library Management System</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -34,7 +34,7 @@
         <div class="col-lg-12">
             <div class="alert alert-info">
                 <a class="close" data-dismiss="alert" href="#">&times;</a>
-                欢迎登录图书馆管理系统
+                Welcome to Library Management System
             </div>
             
             <form class="bootstrap-admin-login-form" method="post" action="/books/LoginServlet">

@@ -223,9 +223,6 @@ id="btn_update" onclick="showInfo2(<%= bean.getTid() %>)">修改</button>
 
                                  </form>	
  								<!--------------------------------------添加的模糊框------------------------>  
-
-    
-    
     <div class="modal fade" id="modal_info" tabindex="-1" role="dialog" aria-labelledby="addModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

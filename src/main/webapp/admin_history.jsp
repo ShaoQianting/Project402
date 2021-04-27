@@ -50,7 +50,6 @@
                         <a href="/books/admin_history.jsp"><i class="glyphicon glyphicon-chevron-right"></i> 图书归还信息</a>
                     </li>
                 </ul>
-                
             </div>
 
             <!-- content -->
@@ -110,7 +109,6 @@
                 </div>
         </div>
     </div>
-    
      
                                      <!-- 修改模态框（Modal） -->
                                      <!-------------------------------------------------------------->  
