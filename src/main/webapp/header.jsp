@@ -115,7 +115,7 @@
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary" >Change password</button>
+					<button type="submit" class="btn btn-primary" >Change Info</button>
 				</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->

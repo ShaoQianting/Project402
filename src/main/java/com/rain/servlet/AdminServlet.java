@@ -29,12 +29,14 @@ public class AdminServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    //String url;
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//url = request.getParameter("url");
 	}
 
 	/**
@@ -52,6 +54,7 @@ public class AdminServlet extends HttpServlet {
 		int tip = Integer.parseInt(request.getParameter("tip"));
 		//获取发起请求页面的文件名称，这个在对应的jsp里面的表单填写，修改完成后就可以直接返回对应的页面
 		String url = request.getParameter("url");
+		//System.out.println("url+"+url);
 		HttpSession session = request.getSession();
 		AdminBean adminbean = new AdminBean();
 		//获取存到session的aid
@@ -84,6 +87,7 @@ public class AdminServlet extends HttpServlet {
 			//修改输入的信息到数据表中
 			admindao.updateUser(adminbean.getAid(), adminbean.getUsername(), adminbean.getPassword(), name,
 					email, phone, adminbean.getLend_num(), adminbean.getMax_num());
+			
 			response.sendRedirect("/books/"+url+".jsp");
 		}
 	}

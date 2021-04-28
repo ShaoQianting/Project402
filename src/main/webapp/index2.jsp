@@ -11,15 +11,7 @@
 	<link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="static/css/bootstrap-admin-theme.css">
 	<link rel="stylesheet" href="static/css/bootstrap-admin-theme.css">
-	<script src="static/js/bootstrap.min.js"></script>
-	<script src="static/jQuery/jquery-3.1.1.min.js"></script>
-	<script src="static/js/bootstrap-dropdown.min.js"></script>
-	<script src="static/js/reader.js"></script>
-	<script src="ajax-lib/ajaxutils.js"></script>
-	<script src="static/js/readerUpdateInfo.js"></script>
-	<script src="static/js/readerUpdatePwd.js"></script>
-	<script src="static/js/jquery.min.js"></script>
-	<script src="static/js/bootstrap.min.js"></script>
+
 </head>
 
 <body class="bootstrap-admin-with-small-navbar">
@@ -69,144 +61,8 @@
     </div>
 </div>
 
-<!-------------------------------------------------------------->  
-                <%--  
-                <form class="form-horizontal" method="post" action="/books/AdminServlet">   <!--保证样式水平不混乱-->                  
-                                     <!-- 模态框（Modal） -->
-				<div class="modal fade" id="updatepwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-									&times;
-								</button>
-								<h4 class="modal-title" id="myModalLabel">
-									修改密码
-								</h4>
-							</div>
-							<div class="modal-body">
-							 
-								<!--正文-->
-								<input type="hidden" name="tip" value="1">
-								<input type="hidden" name="url" value="index">
-							<div class="form-group">
-								<label for="firstname" class="col-sm-3 control-label">原密码</label>
-								<div class="col-sm-7">
-									<input type="password" class="form-control" name="password" id="oldPwd"  placeholder="请输入原密码">
-										<label class="control-label" for="oldPwd" style="display: none"></label>				
-								</div>
-							</div>	
-							
-							<div class="form-group">
-								<label for="firstname" class="col-sm-3 control-label">新密码</label>
-								<div class="col-sm-7">
-									<input type="password" class="form-control" name="password2" id="newPwd"  placeholder="请输入新密码">
-										<label class="control-label" for="newPwd" style="display: none"></label>			
-								</div>
-							</div>	
-							
-								<!--正文-->
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-								</button>
-								<button type="submit" class="btn btn-primary" >
-									修改
-								</button>
-							</div>
-						</div><!-- /.modal-content -->
-					</div><!-- /.modal -->
-				</div>
-
-				</form>	
-                                   <!-------------------------------------------------------------->
-                                   
-                                   <!-------------------------个人资料模糊框------------------------------------->  
-                 
-                   <form class="form-horizontal" method="post" action="/books/AdminServlet">   <!--保证样式水平不混乱-->                  
-                                     <!-- 模态框（Modal） -->
-				<div class="modal fade" id="updateinfo" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-									&times;
-								</button>
-								<h4 class="modal-title" id="ModalLabel">
-									个人资料
-								</h4>
-							</div>
-							
-							<div class="modal-body">
-							 
-								<!--正文-->
-								<input type="hidden" name="tip" value="2">
-								<input type="hidden" name="url" value="index">
-							<div class="form-group">
-								<label for="firstname" class="col-sm-3 control-label">真实姓名</label>
-								<div class="col-sm-7">
-			<input type="text" class="form-control" id="name" name="name" placeholder="请输入您的真实姓名" value='<% out.write(admin.getName());%>'>
-										<label class="control-label" for="name" style="display: none"></label>			
-								</div>
-							</div>	
-							
-							<div class="form-group">
-								<label for="firstname" class="col-sm-3 control-label">手机号</label>
-								<div class="col-sm-7">
-			<input type="text" class="form-control" id="phone" name="phone" placeholder="请输入您的手机号" value='<% out.write(admin.getPhone());%>'>
-											<label class="control-label" for="phone" style="display: none"></label>				
-								</div>
-							</div>	
-							
-							
-							<div class="form-group">
-								<label for="firstname" class="col-sm-3 control-label">邮箱</label>
-								<div class="col-sm-7">
-			<input type="text" class="form-control" id="email" name="email"  placeholder="请输入您的邮箱" value='<% out.write(admin.getEmail());%>'>
-											<label class="control-label" for="email" style="display: none"></label>				
-								</div>
-							</div>	
-							
-								<!--正文-->
-								
-								
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-								</button>
-								<button type="submit" class="btn btn-primary" >
-									修改
-								</button>
-							</div>
-						</div><!-- /.modal-content -->
-					</div><!-- /.modal -->
-				</div>
-
-				</form>	
-                                   <!-------------------------------------------------------------->
 
 
-
-    <div class="modal fade" id="modal_info" tabindex="-1" role="dialog" aria-labelledby="addModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="infoModalLabel">提示</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-12" id="div_info"></div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="btn_info_close" data-dismiss="modal">关闭</button>
-            </div>
-        </div>
-    </div>
-</div> --%>
-
-
-
+<%@ include file="js_common_link.jsp" %>
 </body>
 </html>

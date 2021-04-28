@@ -100,8 +100,8 @@
                         	   bookdata = (ArrayList<BookBean>)bookdao.get_ListInfo();
                            }
 	
-  for (BookBean bean : bookdata){
-  %>                 
+							  for (BookBean bean : bookdata){
+							  %>                 
 								<tbody>
 	                         	   	<td><%= bean.getCard() %></td>
 	                                <td><%= bean.getType() %></td>

@@ -32,31 +32,13 @@
         <!-- left, vertical navbar & content -->
         <div class="row">
             <!-- left, vertical navbar -->
-            <div class="col-md-2 bootstrap-admin-col-left">
-                <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-                    <li>
-                        <a href="/books/admin_book.jsp"><i class="glyphicon glyphicon-chevron-right"></i> 图书管理</a>
-                    </li>
-                    <li>
-                        <a href="/books/admin_user.jsp"><i class="glyphicon glyphicon-chevron-right"></i> 读者管理</a>
-                    </li>
-                    <li>
-                        <a href="/books/admin_booktype.jsp"><i class="glyphicon glyphicon-chevron-right"></i> 图书分类管理</a>
-                    </li>
-                    <li>
-                        <a href="/books/admin_borrow.jsp"><i class="glyphicon glyphicon-chevron-right"></i> 图书借阅信息</a>
-                    </li>
-                    <li>
-                        <a href="/books/admin_history.jsp"><i class="glyphicon glyphicon-chevron-right"></i> 图书归还信息</a>
-                    </li>
-                  
-                </ul>
+           <div class="col-md-3 bootstrap-admin-col-left">
+               <%@ include file="admin_nav.jsp" %>
                 
             </div>
 
             <!-- content -->
-            <div class="col-md-10">
-                
+            <div class="col-md-9">
                   
                 <div class="row">
                     <div class="col-lg-12">
@@ -68,8 +50,6 @@
                                 <ul>
                                     <li>本系统为javaweb编写的图书馆管理系统，编译工具为eclipse，使用mysql数据库</li>
                                     <br>
-
-
                                     <li>管理员可查询修改管理图书信息</li>
                                     <br>
                                     <li>查询修改管理读者信息</li>

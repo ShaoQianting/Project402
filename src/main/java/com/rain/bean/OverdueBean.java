@@ -1,21 +1,26 @@
 package com.rain.bean;
 
-public class HistoryBean {
-	/**
-	 * 历史借阅记录的数据表的bean
-	 */
-	private int hid;//借阅记录的id
-	private int aid;//读者的id
-	private int bid;//图书的id
-	private String card;//图书号
-	private String bookname;//图书名称
-	private String adminname;//读者的账号
-	private String username;//读者的姓名
-	private String begintime;//借阅时间
-	private String endtime;//要还书的世界
-	private int status;//表示借阅状态，1为正在借阅，2是已经还书
-	private int isdue;
-	private int overdueamount;
+public class OverdueBean {
+	private int oid;
+	private int hid;
+	private int aid;
+	private int bid;
+	private String card;
+	private String bookname;
+	private String adminname;
+	private String username;
+	private String begintime;
+	private String endtime;
+	private int days;
+	private double amount;
+	private int insettlement;
+	private String payway;
+	public int getOid() {
+		return oid;
+	}
+	public void setOid(int oid) {
+		this.oid = oid;
+	}
 	public int getHid() {
 		return hid;
 	}
@@ -70,22 +75,30 @@ public class HistoryBean {
 	public void setEndtime(String endtime) {
 		this.endtime = endtime;
 	}
-	public int getStatus() {
-		return status;
+	public int getDays() {
+		return days;
 	}
-	public void setStatus(int status) {
-		this.status = status;
+	public void setDays(int days) {
+		this.days = days;
 	}
-	public int getIsdue() {
-		return isdue;
+
+	public double getAmount() {
+		return amount;
 	}
-	public void setIsdue(int isdue) {
-		this.isdue = isdue;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
-	public int getOverdueamount() {
-		return overdueamount;
+	public int getInsettlement() {
+		return insettlement;
 	}
-	public void setOverdueamount(int overdueamount) {
-		this.overdueamount = overdueamount;
+	public void setInsettlement(int insettlement) {
+		this.insettlement = insettlement;
 	}
+	public String getPayway() {
+		return payway;
+	}
+	public void setPayway(String payway) {
+		this.payway = payway;
+	}
+	
 }

@@ -29,7 +29,7 @@ public class BookDao {
 	public void addBook(String card, String name, String type, String autho, String press, int num) {
 		// TODO Auto-generated method stub
 		Connection conn = DBUtil.getConnectDb();
-		String sql = "insert  into book(card,name,type,autho,press,num) values(?,?,?,?,?,?)";
+		String sql = "insert into book(card,name,type,autho,press,num) values(?,?,?,?,?,?)";
 		int rs = 0;
 		PreparedStatement stm = null;
 		try {
@@ -104,6 +104,8 @@ public class BookDao {
 				tag.setBegintime(rs.getString("begintime"));
 				tag.setEndtime(rs.getString("endtime"));
 				tag.setStatus(rs.getInt("status"));
+				tag.setIsdue(rs.getInt("isdue"));
+				tag.setOverdueamount(rs.getInt("overdueamount"));
 				tag_Array.add(tag);
 			}
 		} catch (SQLException e) {
@@ -140,6 +142,8 @@ public class BookDao {
 				tag.setBegintime(rs.getString("begintime"));
 				tag.setEndtime(rs.getString("endtime"));
 				tag.setStatus(rs.getInt("status"));
+				tag.setIsdue(rs.getInt("isdue"));
+				tag.setOverdueamount(rs.getInt("overdueamount"));
 				tag_Array.add(tag);
 			}
 		} catch (SQLException e) {
@@ -278,7 +282,7 @@ public class BookDao {
 		//生成截止还书日期
 		String endtime = ""+year+"-"+month+"-"+day;
 		Connection conn = DBUtil.getConnectDb();
-		String sql = "insert  into history(aid,bid,card,bookname,adminname,username,begintime,endtime,status) values(?,?,?,?,?,?,?,?,?)";
+		String sql = "insert  into history(aid,bid,card,bookname,adminname,username,begintime,endtime,status,isdue,overdueamount) values(?,?,?,?,?,?,?,?,?,?,?)";
 		int rs = 0;
 		PreparedStatement stm = null;
 		try {
@@ -292,6 +296,8 @@ public class BookDao {
 			stm.setString(7, begintime);
 			stm.setString(8, endtime);
 			stm.setInt(9, 1);
+			stm.setInt(10, 0);
+			stm.setInt(11, 0);
 			rs = stm.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -326,4 +332,53 @@ public class BookDao {
 			e.printStackTrace();
 		}
 	}
+	public ArrayList<HistoryBean> get_HistoryListStatus(){
+		ArrayList<HistoryBean> tag_Array = new ArrayList<HistoryBean>();
+		Connection conn = DBUtil.getConnectDb();
+		String sql = "select * from history where status=1 and isdue=0";
+		PreparedStatement stm = null;
+		ResultSet rs = null;
+		try {
+			stm = conn.prepareStatement(sql);
+			rs = stm.executeQuery();
+			while(rs.next()){
+				HistoryBean tag = new HistoryBean();
+				tag.setHid(rs.getInt("hid"));
+				tag.setAid(rs.getInt("aid"));
+				tag.setBid(rs.getInt("bid"));
+				tag.setBookname(rs.getString("bookname"));
+				tag.setCard(rs.getString("card"));
+				tag.setAdminname(rs.getString("adminname"));
+				tag.setUsername(rs.getString("username"));
+				tag.setBegintime(rs.getString("begintime"));
+				tag.setEndtime(rs.getString("endtime"));
+				tag.setStatus(rs.getInt("status"));
+				tag.setIsdue(rs.getInt("isdue"));
+				tag.setOverdueamount(rs.getInt("overdueamount"));
+				tag_Array.add(tag);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBUtil.CloseDB(rs, stm, conn);
+		}
+		return tag_Array;
+	}
+	
+	public void updateIsOverdue(int hid) {
+		// TODO Auto-generated method stub
+		Connection conn = DBUtil.getConnectDb();
+		String sql = "update history set isdue=1 where hid=?";
+		PreparedStatement stm = null;
+		try {
+			stm = conn.prepareStatement(sql);
+			stm.setInt(1, hid);
+			stm.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }

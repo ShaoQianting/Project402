@@ -5,7 +5,6 @@
 
 $(function () {
 	
-	
     $('#admin_updateInfo').click(function () {
 
     	
@@ -37,12 +36,10 @@ $(function () {
 		
 	});
 	
-		$('#modal_info').on('hide.bs.modal',function() {//提示模糊框隐藏时候触发
-       		 location.reload();  	//刷新当前页面
-    	});
+	$('#modal_info').on('hide.bs.modal',function() {//提示模糊框隐藏时候触发
+   		 location.reload();  	//刷新当前页面
+	});
 	
-	
-
 });
 
 
@@ -65,8 +62,6 @@ function validUpdateAdminInfo() {
         $('#username').next().text("");
         $("#username").next().hide();
     }
-
-	
 	
 	var reg = new RegExp("[\\u4E00-\\u9FFF]+","g");	
 	var name = $.trim($("#name").val());
@@ -103,8 +98,6 @@ function validUpdateAdminInfo() {
         $('#phone').next().text("");
         $("#phone").next().hide();
     } 
-
-	
     return flag;
 }
 

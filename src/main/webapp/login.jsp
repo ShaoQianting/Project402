@@ -24,8 +24,7 @@
     }
 </style>
 
-<script src="static/js/jquery.min.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
+
 
 
 <body  background="static/img/100.jpg" style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;">
@@ -83,5 +82,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
