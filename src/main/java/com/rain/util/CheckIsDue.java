@@ -31,7 +31,7 @@ public class CheckIsDue extends java.util.TimerTask{
 	public void CheckIsDueToday() {
 		BookDao bookdao = new BookDao();
 		OverdueDao overduedao = new OverdueDao();
-		bookdao.get_HistoryListStatus();
+		//bookdao.get_HistoryListStatus();
 		ArrayList<HistoryBean> bookdata = new ArrayList<HistoryBean>();
 		bookdata = (ArrayList<HistoryBean>)bookdao.get_HistoryListStatus();
 		SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");

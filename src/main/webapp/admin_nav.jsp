@@ -19,5 +19,8 @@
     <li>
         <a href="/books/admin_history.jsp"><i class="glyphicon glyphicon-chevron-right"></i> Return Management</a>
     </li>
+    <li>
+        <a href="/books/admin_email.jsp"><i class="glyphicon glyphicon-chevron-right"></i> Email Management</a>
+    </li>
     
 </ul>
