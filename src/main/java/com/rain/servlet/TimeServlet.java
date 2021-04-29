@@ -8,6 +8,7 @@ import java.util.Timer;
 import javax.servlet.http.HttpServlet;
 
 import com.rain.util.CheckIsDue;
+import com.rain.util.EmailUtil;
 
 
 public class TimeServlet extends HttpServlet {
@@ -25,7 +26,7 @@ public class TimeServlet extends HttpServlet {
         
         /*** 定制每日2:00执行方法 ***/
        
-        calendar.set(Calendar.HOUR_OF_DAY, 14);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
          
@@ -34,6 +35,18 @@ public class TimeServlet extends HttpServlet {
         //System.out.print(date);
     	timer.schedule(new CheckIsDue(), date);
     	
+    	timer.schedule(new EmailUtil(), 1000,10*1000);
+
+    	while (true){ 
+          try { 
+              int ch = System.in.read(); //输入字符“c”，回车即停止执行 
+              if (ch - 'c' == 0){ 
+            	  timer.cancel();// 使用这个方法退出任务 
+              } 
+          } catch (IOException e) { 
+              e.printStackTrace(); 
+          } 
+    	} 
     	//timer.cancel();
 //    	Timer timer2 = new Timer(); 
 //    	timer2.schedule(new SendEmailForDue(), 1000, 2000);

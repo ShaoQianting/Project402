@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="static/css/bootstrap-admin-theme.css">
 	<link rel="stylesheet" href="static/css/bootstrap-admin-theme.css">
+	<link rel="stylesheet" href="static/css/common.css">
 	<script src="static/js/bootstrap.min.js"></script>
 	<script src="static/jQuery/jquery-3.1.1.min.js"></script>
 	<script src="static/js/bootstrap-dropdown.min.js"></script>

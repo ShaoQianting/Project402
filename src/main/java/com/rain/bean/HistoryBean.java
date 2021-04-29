@@ -15,7 +15,7 @@ public class HistoryBean {
 	private String endtime;//要还书的世界
 	private int status;//表示借阅状态，1为正在借阅，2是已经还书
 	private int isdue;
-	private int overdueamount;
+	private double overdueamount;
 	public int getHid() {
 		return hid;
 	}
@@ -82,10 +82,11 @@ public class HistoryBean {
 	public void setIsdue(int isdue) {
 		this.isdue = isdue;
 	}
-	public int getOverdueamount() {
+	public double getOverdueamount() {
 		return overdueamount;
 	}
-	public void setOverdueamount(int overdueamount) {
+	public void setOverdueamount(double overdueamount) {
 		this.overdueamount = overdueamount;
 	}
+	
 }

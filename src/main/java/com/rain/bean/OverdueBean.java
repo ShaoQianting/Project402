@@ -13,7 +13,7 @@ public class OverdueBean {
 	private String endtime;
 	private int days;
 	private double amount;
-	private int insettlement;
+	private int issettlement;
 	private String payway;
 	public int getOid() {
 		return oid;
@@ -88,11 +88,12 @@ public class OverdueBean {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public int getInsettlement() {
-		return insettlement;
+	
+	public int getIssettlement() {
+		return issettlement;
 	}
-	public void setInsettlement(int insettlement) {
-		this.insettlement = insettlement;
+	public void setIssettlement(int issettlement) {
+		this.issettlement = issettlement;
 	}
 	public String getPayway() {
 		return payway;

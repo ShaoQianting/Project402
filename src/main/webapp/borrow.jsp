@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import = "com.rain.bean.AdminBean,com.rain.bean.HistoryBean,com.rain.dao.BookDao,com.rain.dao.AdminDao" %>
+<%@ page import = "com.rain.bean.AdminBean,com.rain.bean.HistoryBean,com.rain.dao.BookDao,com.rain.dao.AdminDao,com.rain.util.CommonFunctions" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-CN" class="ax-vertical-centered">
 <head>
@@ -7,10 +7,7 @@
 	<title>图书馆管理系统</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="static/css/bootstrap-admin-theme.css">
-	<link rel="stylesheet" href="static/css/bootstrap-admin-theme.css">
+	<%@ include file="/static/css_common_link.jsp" %>
 	<script src="static/js/bootstrap.min.js"></script>
 	<script src="static/jQuery/jquery-3.1.1.min.js"></script>
 	<script src="static/js/bootstrap-dropdown.min.js"></script>
@@ -56,7 +53,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default bootstrap-admin-no-table-panel">
                             <div class="panel-heading">
-                                <div class="text-muted bootstrap-admin-box-title">当前借阅信息</div>
+                                <div class="text-muted bootstrap-admin-box-title">Current Borrowing Information</div>
                             </div>
                            
                         </div>
@@ -72,24 +69,28 @@
                         <table id="data_list" class="table table-hover table-bordered" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th>图书号</th>
-	                            <th>图书名称</th>
-	                            <th>读者账号</th>
-	                            <th>读者名称</th>
-	                            <th>借阅日期</th>
-	                            <th>截止还书日期</th>
-	                            <th>操作</th>
+                                <th>Book Number</th>
+	                            <th>Book Name</th>
+	                            <th>Reader Account</th>
+	                            <th>Reader Name</th>
+	                            <th>Begin Date</th>
+	                            <th>End Date</th>
+	                            <th>Overdue</th>
+	                            <th>Overdue Days</th>
+	                            <th>Overdue Amount</th>
+	                            <th>Operation</th>
                             </tr>
                             </thead>
                             <%
                              ArrayList<HistoryBean> bookdata = new ArrayList<HistoryBean>();
                              bookdata = (ArrayList<HistoryBean>)request.getAttribute("data");
+                             CommonFunctions cf = new CommonFunctions();
                            if(bookdata==null){
                         	   BookDao bookdao = new BookDao();
                         	   bookdata = (ArrayList<HistoryBean>)bookdao.get_HistoryListInfo(1,aid);
                            }
-  for (HistoryBean bean : bookdata){
-  %>                 
+						  for (HistoryBean bean : bookdata){
+						  %>                 
                             	<tbody>
 	                         	   	<td><%= bean.getCard() %></td>
 	                         	   	<td><%= bean.getBookname() %></td>
@@ -97,22 +98,48 @@
 	                                <td><%= bean.getUsername() %></td>
 	                                <td><%= bean.getBegintime() %></td>
 	                                <td><%= bean.getEndtime() %></td>  
+	                               
+	                                <% String settement = "No";
+	                                if(bean.getIsdue()==1){ 
+	                                	settement = "Yes";
+	                                %>
+	                                 <td><%= settement %></td>  
+	                                 <td><%= cf.diffDays(bean.getEndtime()) %></td>
+	                               	 <td><%= bean.getOverdueamount() %></td> 
+	                               	 <td>
+	                               	 <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" onclick="pay(<%= bean.getHid() %>)">Pay</button>
+	                                 </td>  
+	                                <%
+	                                } else{
+	                                %>
+	                                	
+	                                <td></td>
+	                                <td></td>
+	                                <td></td>
 	                                <td>
-<button type="button" class="btn btn-info btn-xs" data-toggle="modal" onclick="haibook(<%= bean.getHid() %>)">还书</button>
-	                                </td>                                               
+	                                <button type="button" class="btn btn-info btn-xs" data-toggle="modal" onclick="haibook(<%= bean.getHid() %>)">Return</button>
+	                                </td>  
+	                                <%}%>
+	                                                                   
                           	  </tbody>
                              <%} %> 
                         </table>
                     </div>
                 </div>
             <script type="text/javascript">
-    function haibook(hid) {
-    	con=confirm("是否还书?"); 
-    	if(con==true){
-    		location.href = "/books/borrowServlet?tip=2&show=1&hid="+hid;
-    	}
-    }
-    </script>
+		    function haibook(hid) {
+		    	con=confirm("Do you return the book?"); 
+		    	if(con==true){
+		    		location.href = "/books/borrowServlet?tip=2&show=1&hid="+hid;
+		    	}
+		    }
+		    function pay(hid) {
+		    	con=confirm("Has the reader already paid?"); 
+		    	if(con==true){
+		    		location.href = "/books/OverdueServlet?from=reader&mod=pay&hid="+hid;
+		    	}
+		    }
+		    </script>
         </div>
     </div>
 </div>
@@ -136,8 +163,6 @@
         </div>
     </div>
 </div>
-
-
 
 </body>
 </html>

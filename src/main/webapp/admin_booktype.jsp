@@ -7,10 +7,8 @@
 	<title>图书馆管理系统</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="static/css/bootstrap-admin-theme.css">
-	<link rel="stylesheet" href="static/css/bootstrap-admin-theme.css">
+	<%@ include file="/static/css_common_link.jsp" %>
+	
 	<script src="static/js/bootstrap.min.js"></script>
 	<script src="static/jQuery/jquery-3.1.1.min.js"></script>
 	<script src="static/js/bootstrap-dropdown.min.js"></script>

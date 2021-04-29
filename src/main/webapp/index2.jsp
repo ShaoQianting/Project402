@@ -63,6 +63,6 @@
 
 
 
-<%@ include file="js_common_link.jsp" %>
+<%@ include file="static/js_common_link.jsp" %>
 </body>
 </html>
